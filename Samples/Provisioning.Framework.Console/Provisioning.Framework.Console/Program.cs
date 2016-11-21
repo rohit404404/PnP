@@ -33,7 +33,9 @@ namespace Provisioning.Framework
             // Apply template to new site from 
             ApplyProvisioningTemplate(defaultForeground, targetWebUrl, userName, pwd, template);
 
-            // Pause
+            // Just to pause and indicate that it's all done
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("We are all done. Press enter to continue.");
             Console.ReadLine();
         }
 
@@ -59,7 +61,7 @@ namespace Provisioning.Framework
 
                 // Create FileSystemConnector, so that we can store composed files temporarely somewhere 
                 ptci.FileConnector = new FileSystemConnector(@"c:\temp\pnpprovisioningdemo", "");
-                ptci.PersistComposedLookFiles = true;
+                ptci.PersistBrandingFiles = true;
                 ptci.ProgressDelegate = delegate (String message, Int32 progress, Int32 total)
                 {
                     // Only to output progress for console UI
